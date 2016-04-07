@@ -3,6 +3,7 @@
   "description": "a tiny JavaScript expression parser",
   "main": "build/jsep.js",
   "authors": [
+    "Leonn Paiva <leonn.paiva@gmail.com> (http://leonn.github.io/)",
     "Stephen Oney <swloney@gmail.com> (http://from.so/)"
   ],
   "license": "MIT",
