@@ -1,0 +1,18 @@
+{
+  "name": "system-jsep",
+  "description": "a tiny JavaScript expression parser",
+  "main": "build/jsep.js",
+  "authors": [
+    "Stephen Oney <swloney@gmail.com> (http://from.so/)"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/systemits/jsep",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

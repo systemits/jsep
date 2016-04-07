@@ -7,7 +7,7 @@
 	'use strict';
 	// Node Types
 	// ----------
-	
+
 	// This is the full set of types that any JSEP node can be.
 	// Store them here to save space when minified
 	var COMPOUND = 'Compound',
@@ -43,7 +43,7 @@
 
 	// Operations
 	// ----------
-	
+
 	// Set `t` to `true` to save space (when minified, not gzipped)
 		t = true,
 	// Use a quickly-accessible map to store all of the unary operators
@@ -55,7 +55,7 @@
 		binary_ops = {
 			'||': 1, '&&': 2, '|': 3,  '^': 4,  '&': 5,
 			'==': 6, '!=': 6, '===': 6, '!==': 6,
-			'<': 7,  '>': 7,  '<=': 7,  '>=': 7, 
+			'<': 7,  '>': 7,  '<=': 7,  '>=': 7,
 			'<<':8,  '>>': 8, '>>>': 8,
 			'+': 9, '-': 9,
 			'*': 10, '/': 10, '%': 10
@@ -134,7 +134,7 @@
 						ch = exprICode(++index);
 					}
 				},
-				
+
 				// The main parsing function. Much of this code is dedicated to ternary expressions
 				gobbleExpression = function() {
 					var test = gobbleBinaryExpression(),
@@ -238,7 +238,7 @@
 					i = stack.length - 1;
 					node = stack[i];
 					while(i > 1) {
-						node = createBinaryExpression(stack[i - 1].value, stack[i - 2], node); 
+						node = createBinaryExpression(stack[i - 1].value, stack[i - 2], node);
 						i -= 2;
 					}
 					return node;
@@ -248,7 +248,7 @@
 				// e.g. `foo.bar(baz)`, `1`, `"abc"`, `(a % 2)` (because it's in parenthesis)
 				gobbleToken = function() {
 					var ch, to_check, tc_len;
-					
+
 					gobbleSpaces();
 					ch = exprICode(index);
 
@@ -278,7 +278,7 @@
 							}
 							to_check = to_check.substr(0, --tc_len);
 						}
-						
+
 						return false;
 					}
 				},
@@ -297,7 +297,7 @@
 							number += exprI(index++);
 						}
 					}
-					
+
 					ch = exprI(index);
 					if(ch === 'e' || ch === 'E') { // exponent marker
 						number += exprI(index++);
@@ -312,7 +312,7 @@
 							throwError('Expected exponent (' + number + exprI(index) + ')', index);
 						}
 					}
-					
+
 
 					chCode = exprICode(index);
 					// Check to make sure this isn't a variable name that start with a number (123abc)
@@ -340,18 +340,6 @@
 						if(ch === quote) {
 							closed = true;
 							break;
-						} else if(ch === '\\') {
-							// Check for all of the common escape codes
-							ch = exprI(index++);
-							switch(ch) {
-								case 'n': str += '\n'; break;
-								case 'r': str += '\r'; break;
-								case 't': str += '\t'; break;
-								case 'b': str += '\b'; break;
-								case 'f': str += '\f'; break;
-								case 'v': str += '\x0B'; break;
-								case '\\': str += '\\'; break;
-							}
 						} else {
 							str += ch;
 						}
@@ -367,7 +355,7 @@
 						raw: quote + str + quote
 					};
 				},
-				
+
 				// Gobbles only identifiers
 				// e.g.: `foo`, `_value`, `$x1`
 				// Also, this function checks if that identifier is a literal:
@@ -440,7 +428,7 @@
 				gobbleVariable = function() {
 					var ch_i, node;
 					ch_i = exprICode(index);
-						
+
 					if(ch_i === OPAREN_CODE) {
 						node = gobbleGroup();
 					} else {
@@ -514,7 +502,7 @@
 				},
 
 				nodes = [], ch_i, node;
-				
+
 			while(index < length) {
 				ch_i = exprICode(index);
 
